@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$site_name}</title>
+		<tc_include file="Public:head" />
+		<link href="__TMPL__Public/css/index.css" rel="stylesheet">
+	</head>
+<body>
+<tc_include file="Public:nav"/>
+<div id="container">
+	<div id="wrap">
+	   <php>
+	   		$slides=sp_getslide('index_top_slide',5,'slide_id DESC');
+			$j=0;
+	   </php>
+		<div id="myCarousel" class="carousel slide">
+		   <!-- 轮播（Carousel）指标 -->
+		   <ol class="carousel-indicators">
+		   <php>
+		   	for($i = 0;$i < count($slides);$i++)
+				if($i < 1){
+					echo '<li data-target="#myCarousel" data-interval="0" data-slide-to="0" class="active"></li>';
+				}else{
+					echo '<li data-target="#myCarousel" data-interval="0" data-slide-to="'.$i.'"></li>';
+				}
+		   </php>
+		   </ol>   
+		   <!-- 轮播（Carousel）项目 -->
+		   <div class="carousel-inner">
+			<foreach name="slides" item="vo">
+			      <div class="item <php>if($j==0){ echo 'active';}</php>">
+					<a href="{$vo.slide_url}" title="{$vo.slide_content}">
+			         <img src="{$vo.slide_pic}" class="controlsize" alt="{$vo.slide_content}" width="100%">
+			         <div class="carousel-caption">{$vo.slide_name}</div>
+					</a>
+			      </div>
+			      <php>$j++;</php>
+			</foreach>
+		   </div>
+		   <!-- 轮播（Carousel）导航 -->
+		   <a class="carousel-control left" href="#myCarousel" 
+		      data-slide="prev">&lsaquo;</a>
+		   <a class="carousel-control right" href="#myCarousel" 
+		      data-slide="next">&rsaquo;</a>
+		</div> 
+	</div>
+	<div id="wrap">
+
+        <div class="frame">
+            <ul>
+                <li>
+                    <a href="{:u('list/index',array('id'=>1))}" title="铜浮雕">
+                    	<img src="__TMPL__Public/img/tongfudiao.png" alt="铜浮雕">
+                    </a>
+                </li>
+                <li>
+                    <a href="{:u('list/index',array('id'=>2))}" title="铜工艺">
+                    	<img src="__TMPL__Public/img/tonggongyi.png" alt="铜工艺">
+                    </a>
+                </li>
+                <li>
+                    <a href="{:u('list/index',array('id'=>3))}" title="铁工艺">
+                    	<img src="__TMPL__Public/img/tiegongyi.png" alt="铁工艺">
+                    </a>
+                </li>
+            </ul>
+        </div>
+	</div>
+	<div id="wrap">
+	    <div class="gallery">
+	        <a href="{:u('list/index',array('id'=>5))}" title="色彩展示"><h3>色彩展示</h3></a>
+	        <ul>
+	        	<php>
+					$sczs=sp_sql_posts("cid:5;field:post_title,post_excerpt,tid,smeta;order:post_date desc;limit:3;"); 
+				</php>
+	    		<foreach name="sczs" item="vo">
+	    		<php> $smeta=json_decode($vo['smeta'],true);</php>
+		            <li>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}">
+		                	<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}">
+		                </a>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}">
+		                	<h4>{$vo.post_title}</h4>
+		                </a>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" class="txt3">{:msubstr($vo['post_excerpt'],0,96)}</a>
+		            </li>
+	            </foreach>
+	        </ul>
+	    </div>
+	</div>
+	<div id="wrap">
+	    <div class="contents">
+	        <div class="title">
+	            <h3><a href="{:u('list/index',array('id'=>1))}" title="铜浮雕">铜浮雕</a></h3>
+	        </div>
+	        <ul>
+		    	<php>
+					$tfd=sp_sql_posts("cid:1;field:post_title,tid,smeta;order:post_hits asc;limit:8;"); 
+				</php>
+				<foreach name="tfd" item="vo">
+				<php> $smeta=json_decode($vo['smeta'],true);</php>
+		            <li>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}">
+				                	<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}">
+				        </a>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}" class="togyi4t">
+		                	{$vo.post_title}
+		                </a>
+		            </li>
+		        </foreach>
+	        </ul>
+	    </div>
+	</div>
+	<div id="wrap">
+	    <div class="contents">
+	        <div class="title">
+	            <h3><a href="{:u('list/index',array('id'=>2))}" title="铜工艺">铜工艺</a></h3>
+	        </div>
+	        <ul>
+		    	<php>
+					$tgy=sp_sql_posts("cid:2;field:post_title,tid,smeta;order:post_hits asc;limit:8;"); 
+				</php>
+				<foreach name="tgy" item="vo">
+				<php> $smeta=json_decode($vo['smeta'],true);</php>
+		            <li>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}">
+				                	<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}">
+				        </a>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}" class="togyi4t">
+		                	{$vo.post_title}
+		                </a>
+		            </li>
+		        </foreach>
+	        </ul>
+	    </div>
+	</div>
+	<div id="wrap">
+	    <div class="contents">
+	        <div class="title">
+	            <h3><a href="{:u('list/index',array('id'=>3))}" title="铁工艺">铁工艺</a></h3>
+	        </div>
+	        <ul>
+		    	<php>
+					$tfd=sp_sql_posts("cid:3;field:post_title,tid,smeta;order:post_hits asc;limit:8;"); 
+				</php>
+				<foreach name="tfd" item="vo">
+				<php> $smeta=json_decode($vo['smeta'],true);</php>
+		            <li>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}">
+				                	<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}">
+				        </a>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}" class="togyi4t">
+		                	{$vo.post_title}
+		                </a>
+		            </li>
+		        </foreach>
+	        </ul>
+	    </div>
+	</div>
+	<div id="wrap">
+	    <div class="contents">
+	        <div class="title">
+	            <h3><a href="{:u('list/index',array('id'=>4))}" title="成功案例">成功案例</a></h3>
+	        </div>
+	        <ul>
+		    	<php>
+					$tfd=sp_sql_posts("cid:4;field:post_title,tid,smeta;order:post_hits asc;limit:8;"); 
+				</php>
+				<foreach name="tfd" item="vo">
+				<php> $smeta=json_decode($vo['smeta'],true);</php>
+		            <li>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}">
+				                	<img src="{:sp_get_asset_upload_path($smeta['thumb'])}" alt="{$vo.post_title}">
+				        </a>
+		                <a href="{:U('article/index',array('id'=>$vo['tid']))}" title="{$vo.post_title}" class="togyi4t">
+		                	{$vo.post_title}
+		                </a>
+		            </li>
+		        </foreach>
+	        </ul>
+	    </div>
+	</div>
+	<div id="wrap">
+		<tc_include file="Public:links"/>
+	</div>
+</div>
+<tc_include file="Public:footer"/>
+<tc_include file="Public:scripts"/>
+{:hook('footer_end')}
+</body>
+</html>

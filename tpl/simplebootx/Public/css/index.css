@@ -1,0 +1,130 @@
+/* CSS Document */
+@charset "utf-8";
+body {
+	background-image:url(../img/bj.png);
+	background-position: center;
+	background-repeat:no-repeat;
+	background-attachment:fixed
+}
+.frame{
+    margin: 40px 106px 25px;
+    width: 989px;
+    height: 208px;
+    background-image: url(../img/frame.png);
+}
+.frame ul li{
+    margin: 22px 80px;
+    float: left;
+    width: 165px;
+}
+.frame ul li img{
+    width: 165px;
+    height: 165px;
+}
+.gallery{
+    position: relative;
+    margin: 26px auto;
+    background-image: url("../img/gallery.png");
+    width: 989px;
+    height: 530px;
+}
+.gallery h3{
+    font-family: "微软雅黑 Regular";
+    font-size: 48px;
+    color: #fbeace;
+    cursor: pointer;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 55px;
+    word-break: break-all;
+    position: absolute;
+    top: 100px;
+    left: 55px;
+}
+.gallery ul{
+    position: absolute;
+    left: 168px;
+
+}
+.gallery ul li{
+	width: 800px;
+	height: 145px;
+	margin-top: 25px;
+	position: relative;
+}
+.gallery ul li a img{
+	width: 218px;
+	height: 126px;
+	margin: 5px 40px;
+}
+.gallery ul li h4{
+    font-family: "微软雅黑";
+    font-weight: bold;
+    color: #fbe9cf;
+    font-size: 24px;
+    position: absolute;
+    top: 0px;
+    left: 320px;
+
+
+}
+.gallery ul li .txt3{
+	width: 482px;
+	height: 80px;
+	position: absolute;
+	top: 35px;
+	left: 300px;
+	margin: 10px;
+	font-size: 16px;
+	color: #b99f7a;
+}
+
+.contents{
+    position: relative;
+    margin: 20px auto;
+    -moz-box-shadow: 4px 4px 3px #ebebeb;
+    -webkit-box-shadow:4px 4px 3px #ebebeb;
+    box-shadow: 4px 4px 3px #ebebeb;
+}
+.title{
+    text-align: center;
+    height: 45px;
+    background-image: url("../img/title.png");
+}
+.title h3 a{
+    line-height: 45px;
+    text-align: center;
+    font-family: "微软雅黑 Regular";
+    font-size: 26px;
+    color: #ffffff;
+}
+
+.contents ul li{
+	margin: 20px 10px;
+	float: left;
+	height: 257px;
+	width: 280px;
+	border: 1px solid #ccc;
+}
+.contents ul li img{
+	width: 280px;
+	height: 210px;
+}
+.contents ul li .togyi4t{
+	text-align: center;
+	font-family: "微软雅黑 Regular";
+	font-size: 16px;
+	color: #000000;
+	line-height: 45px;
+	border-top: none;
+	width: 278px;
+	position: absolute;
+	background-color: #fff;
+	overflow: hidden;
+	height: 45px;
+}

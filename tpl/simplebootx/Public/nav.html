@@ -1,0 +1,25 @@
+{:hook('body_start')}
+
+<div id="header">
+    <div id="logo">
+       <a href="__ROOT__/"><img src="__TMPL__Public/images/logo.png"/></a>
+    </div>
+    <!-- nav -->
+     <div id="subnav">
+		<div class="nav">
+          	<php>
+			$effected_id="";
+		  	$filetpl="<a href='\$href' target='\$target'>\$label</a>";
+		  	$foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <b class='caret'></b></a>";
+		  	echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl);
+			</php>
+                <div class="search">
+                    <form method="post" action="{:U('portal/search/index')}">
+						<input class="search_input" placeholder="Search" name="keyword" value="{:I('get.keyword')}" required/>
+                		<input type="submit" class="searchbar" value="搜索" />
+                    </form>
+                </div>
+		</div>
+    </div>
+    <!-- //nav -->	
+</div>

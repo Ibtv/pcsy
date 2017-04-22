@@ -1,0 +1,41 @@
+<admintpl file="header"/>
+<style>
+.home_info li em { float: left;width: 120px;font-style: normal;}
+li {list-style: none;}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <div id="home_toptip"></div>
+  <h4 class="well">系统信息</h4>
+  <div class="home_info">
+    <ul>
+      <volist name="server_info" id="vo">
+        <li> <em>{$key}</em> <span>{$vo}</span> </li>
+      </volist>
+    </ul>
+  </div>
+
+  <h4 class="well">二次开发</h4>
+  <div class="home_info" id="home_devteam">
+    <ul>
+      <li> <em>网站程序</em> <span>王志新</span> </li>
+      <li> <em>页面制作</em> <span>王志新、杨博文</span> </li>
+      <li> <em>页面设计</em> <span>王晓雯、衡月</span> </li>
+    </ul>
+  </div>
+  <h4 class="well">发起团队</h4>
+  <div class="home_info" id="home_devteam">
+    <ul>
+      <li> <em>版权团队</em> <span>www.thinkcmf.com</span> </li>
+      <li> <em>团队成员</em> <span>Dean、Sam、Tuolaji、Smile、Codefans、睡不醒的猪、Jack、日本那只猫</span> </li>
+      <li> <em>贡献成员</em> <span>Kin Ho、Powerless、Jess、木兰情、Labulaka、WelKinVan、Jeson、Yim、Jamlee</span> </li>
+      <li> <em>联系邮箱</em> <span>cmf@simplewind.net</span> </li>
+    </ul>
+  </div>
+</div>
+<script src="__ROOT__/statics/js/common.js"></script> 
+
+</body>
+</html>

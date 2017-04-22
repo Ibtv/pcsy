@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>联系我们┊{$site_name}</title>
+	<meta name="keywords" content="{$post_keywords}" />
+	<meta name="description" content="{$post_excerpt}">
+    <tc_include file="Public:head" />
+    
+    <script src="http://api.map.baidu.com/api?v=1.3"></script>
+    
+	<style>
+	img{
+	max-width: none;
+	}
+	</style>
+</head>
+<body class="body-white">
+<tc_include file="Public:nav" />
+
+<div class="section slice no-padding">
+        <div id="mapCanvas" class="map-canvas no-margin" style="height:400px;">
+        	<script type="text/javascript">
+			   var map = new BMap.Map("mapCanvas");            // 创建Map实例
+			var point = new BMap.Point("116.466555", "39.874155");    // 创建点坐标
+			map.centerAndZoom(point,16);                // 初始化地图,设置中心点坐标和地图级别。
+			map.enableScrollWheelZoom();                  //启用滚轮放大缩小
+			//添加缩放控件
+			map.addControl(new BMap.NavigationControl());  
+			map.addControl(new BMap.ScaleControl());  
+			map.addControl(new BMap.OverviewMapControl()); 
+			
+			var marker = new BMap.Marker(point); // 创建标注 
+			map.addOverlay(marker); // 将标注添加到地图中
+			var infoWindow = new BMap.InfoWindow("<b>鹏成实业</b><br/><span class=''>Address:北京市朝阳区东三环南路19号<br>联合国际大厦甲段6层</span>"); // 创建信息窗口对象
+			marker.openInfoWindow(infoWindow);
+			   </script>
+        </div>
+   </div>
+<div class="container">
+    <div class="row">
+                    <div style="width: 570px;float: left;"class="search">
+                        <form class="form-light J_ajaxForm mt-20" role="form" method="post" action="{:u('api/guestbook/addmsg')}">
+                            <div class="row">
+                            	<div class="span1">
+                                    <div class="form-group">
+                                        <label>姓名</label>
+                                		<input type="text" maxlength="16" placeholder="Your name" name="full_name"class="contact_input">
+                                    </div>
+                                </div>
+                                <div class="span1">
+                                    <div class="form-group">
+                                        <label>邮箱</label>
+                                        <input type="email" maxlength="16" placeholder="Email address" name="email"class="contact_input">
+                                    </div>
+                                </div>
+                            <div class="form-group">
+                                <label>内容</label>
+                                <textarea id="message" placeholder="Write you message here..." style="height:100px;" name="msg"class="contact_input"></textarea>
+                            </div>
+                             
+                            	<div class="span6">
+                                    <div class="form-group">
+		                                <label>验证码</label>
+		                                <input type="text" placeholder="please enter the code"  maxlength="4" name="verify" autocomplete="off"class="contact_input">
+										{:sp_verifycode_img('code_len=4&font_size=20&width=238&height=34&font_color=&background=','style="cursor: pointer;vertical-align: top;" title="点击获取"')}
+										
+                                    </div><button type="submit" class="btn btn-primary J_ajax_submit_btn">发送留言</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div style="width: 570px;float: left;">
+                        <div>
+                        	<div style="width:285px;float: left;">
+                            <h3 class="section-title">Contact</h3>
+                                <div class="contact-info">
+                                    <h5>Address</h5>
+                                    <p>6F, Section A,United International Tower,<br>South Road of East 3rd Ring,<br>Chaoyang District, Beijing, China.</p>
+                                    <h5>Email</h5>
+                                    <p>{$site_admin_email}</p>
+                                    <h5>Phone</h5>
+                                    <p>18910263126 / 010-52895379</p>
+                                 </div>
+                            </div>
+                            <div style="width:285px;float: left;">
+                                <h3 class="section-title">联系方式</h3>
+                                <div class="contact-info">
+                                    <h5>地址</h5>
+                                    <p>北京市朝阳区<br>东三环南路19号<br>联合国际大厦甲段6层</p>
+                                    <h5>邮箱</h5>
+                                    <p>{$site_admin_email}</p>
+                                    <h5>电话</h5>
+                                    <p>18910263126 / 010-52895379</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</div>
+<tc_include file="Public:footer" />
+
+<tc_include file="Public:scripts" />
+
+</body>
+</html>
